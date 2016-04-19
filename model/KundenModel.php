@@ -33,7 +33,7 @@ class KundenModel extends Model
         $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ss', $firstName, $password);
+        $statement->bind_param('ss', $benutzername, $password);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);

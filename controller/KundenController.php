@@ -19,7 +19,7 @@ class KundenController
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
 
-        $view->users = $kundenModel->readAll();
+        $view->kunden = $kundenModel->readAll();
         $view->display();
     }
 
@@ -30,7 +30,7 @@ class KundenController
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->display();
-
+    }
     public function doCreate()
     {
         if ($_POST['send']) {
