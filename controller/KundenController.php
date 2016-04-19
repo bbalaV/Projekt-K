@@ -28,7 +28,7 @@ class KundenController
 
         $view = new View('kunden_create');
         $view->title = 'Benutzer erstellen';
-        $view->heading = 'Benutzer erstellen';
+        $view->heading = '';
         $view->display();
     }
     public function doCreate()

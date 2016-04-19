@@ -6,7 +6,7 @@
     
     
 
- <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="/Projekt-K/view/css/style.css">
 
     
     
@@ -47,4 +47,5 @@
   </form>
 </div>
 	</div>
-</form>
+    </body>
+    </html>

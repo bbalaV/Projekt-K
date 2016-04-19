@@ -33,7 +33,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
+            <li><a href="/Projekt-K/">Home</a></li>
             <li><a href="/user">Benutzer</a></li>
             <li><a href="/Projekt-K/kunden/create">Benutzer erstellen</a></li>
           </ul>
@@ -44,3 +44,5 @@
     <div class="container">
 
     <h1><?= $heading ?></h1>
+
+        
