@@ -37,7 +37,7 @@ class Dispatcher
         $uriFragments = explode('/', $uri); // In einzelteile zerlegen
 
         // Den Namen des gewünschten Controllers ermitteln
-        $controllerName = 'DefaultController';
+        $controllerName = 'KundenController';
         if (!empty($uriFragments[1])) {
             $controllerName = $uriFragments[1];
             $controllerName = ucfirst($controllerName); // Erstes Zeichen grossschreiben
@@ -45,7 +45,7 @@ class Dispatcher
         }
 
         // Den Namen der auszuführenden Methode ermitteln
-        $method = 'index';
+        $method = 'create';
         if (!empty($uriFragments[2])) {
             $method = $uriFragments[2];
         }

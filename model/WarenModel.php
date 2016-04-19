@@ -42,4 +42,4 @@ class WarenModel extends Model
         }
     }
 }
->>>>>>> origin/master
+

@@ -10,13 +10,14 @@ class WarenController
 {
     public function index()
     {
+        $login = false;
         $warenModel = new WarenModel();
 
         $view = new View('waren_index');
         $view->title = 'Waren';
         $view->heading = 'Waren';
         $view->waren = $warenModel->readAll();
-        $view->display();
+        $view->display($login);
     }
 
     public function create()
@@ -52,4 +53,4 @@ class WarenController
         header('Location: /waren');
     }
 }
->>>>>>> origin/master
+
