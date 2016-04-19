@@ -78,12 +78,13 @@ class View
         }
     }
 
-    public function display()
+    public function display($login)
     {
         extract($this->properties);
-
-        require './view/header.php';
+        if(!$login){
+        require './view/header.php';}
         require $this->viewfile;
-        require './view/footer.php';
+         if(!$login){
+        require './view/footer.php';}
     }
 }

@@ -30,10 +30,10 @@ class KundenModel extends Model
     {
         $passwort = sha1($passwort);
 
-        $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (?, ?)";
+        $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ss', $benutzername, $password);
+        $statement->bind_param('ss', $benutzername, $passwort);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);

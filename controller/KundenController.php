@@ -9,8 +9,9 @@ require_once 'model/KundenModel.php';
 
 class KundenController
 {
+
     public function index()
-    {
+    {    $login = true;
 
         $kundenModel = new KundenModel();
 
@@ -20,30 +21,30 @@ class KundenController
         $view->heading = 'Benutzer';
 
         $view->kunden = $kundenModel->readAll();
-        $view->display();
+        $view->display($login);
     }
 
     public function create()
     {
-
+        $login = true;
         $view = new View('kunden_create');
         $view->title = 'Benutzer erstellen';
         $view->heading = '';
-        $view->display();
+        $view->display($login);
     }
     public function doCreate()
     {
-        if ($_POST['send']) {
+        if ($_POST['login']) {
 
-            $firstName = $_POST['benutzername'];
-            $password = $_POST['passwort'];
+            $benutzername = $_POST['benutzername'];
+            $passwort = $_POST['passwort'];
 
             $kundenModel = new KundenModel();
             $kundenModel->create($benutzername, $passwort);
         }
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location: /kunden');
+        header('Location: /Projekt-K/kunden');
     }
 
     public function delete()
@@ -54,6 +55,6 @@ class KundenController
 
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location: /kunden');
+        header('Location: /Projekt-K/kunden');
     }
 }
