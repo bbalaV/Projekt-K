@@ -1,26 +1,26 @@
 <?php
 
-require_once 'model/UserModel.php';
+require_once 'model/KundenModel.php';
 
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class UserController
+class KundenController
 {
     public function index()
     {
-        $userModel = new UserModel();
+        $kundenModel = new KundenModel();
 
-        $view = new View('user_index');
+        $view = new View('kunden_index');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
-        $view->users = $userModel->readAll();
+        $view->users = $kundenModel->readAll();
         $view->display();
     }
 
     public function create()
     {
-        $view = new View('user_create');
+        $view = new View('kunden_create');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->display();
@@ -29,25 +29,23 @@ class UserController
     public function doCreate()
     {
         if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $firstName = $_POST['benutzername'];
+            $password = $_POST['passwort'];
 
-            $userModel = new UserModel();
-            $userModel->create($firstName, $lastName, $email, $password);
+            $kundenModel = new KundenModel();
+            $kundenModel->create($benutzername, $passwort);
         }
 
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        // Anfrage an die URI /kunden weiterleiten (HTTP 302)
+        header('Location: /kunden');
     }
 
     public function delete()
     {
-        $userModel = new UserModel();
-        $userModel->deleteById($_GET['id']);
+        $kundenModel = new KundenModel();
+        $kundenModel->deleteById($_GET['id']);
 
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        // Anfrage an die URI /kunden weiterleiten (HTTP 302)
+        header('Location: /kunden');
     }
 }

@@ -28,7 +28,7 @@ class KundenModel extends Model
      */
     public function create($benutzername, $passwort)
     {
-        $password = sha1($passwort);
+        $passwort = sha1($passwort);
 
         $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (?, ?)";
 
