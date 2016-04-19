@@ -3,7 +3,7 @@
 require_once 'lib/Model.php';
 
 /**
- * Das UserModel ist zuständig für alle Zugriffe auf die Tabelle "kunden".
+ * Das UserModel ist zuständig für alle Zugriffe auf die Tabelle "user".
  *
  * Die Ausführliche Dokumentation zu Models findest du in der Model Klasse.
  */
@@ -16,21 +16,19 @@ class KundenModel extends Model
     protected $tableName = 'kunden';
 
     /**
-     * Erstellt einen neuen benutzer mit den gegebenen Werten.
+     * Erstellt eine neue Ware mit den gegebenen Werten.
      *
-     * Das Passwort wird vor dem ausführen des Queries noch mit dem SHA1
-     *  Algorythmus gehashed.
      *
-     * @param $benutzername Wert für die Spalte benutzername
-     * @param $passwort Wert für die Spalte passwort
+     * @param $name Wert für die Spalte firstName
+     * @param $preis Wert für die Spalte preis
+     * @param $filialenid Wert für die Spalte filialenid
+     * @param $menge Wert für die Spalte menge
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
     public function create($benutzername, $passwort)
     {
-        $passwort = sha1($passwort);
-
-        $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (, ?)";
+        $query = "INSERT INTO $this->tableName (benutzername, passwort) VALUES (?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ss', $benutzername, $passwort);

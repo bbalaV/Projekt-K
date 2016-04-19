@@ -34,7 +34,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/Projekt-K/">Home</a></li>
-            <li><a href="/user">Benutzer</a></li>
+            <li><a href="/Projekt-K/kunden/index">Benutzer</a></li>
             <li><a href="/Projekt-K/kunden/create">Benutzer erstellen</a></li>
           </ul>
         </div><!--/.nav-collapse -->

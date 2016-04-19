@@ -11,7 +11,7 @@ class KundenController
 {
 
     public function index()
-    {    $login = true;
+    {    $login = false;
 
         $kundenModel = new KundenModel();
 
@@ -36,15 +36,15 @@ class KundenController
     {
         if ($_POST['login']) {
 
-            $benutzername = $_POST['benutzername'];
-            $passwort = $_POST['passwort'];
+            $benutzername = $_POST['user'];
+            $passwort = $_POST['pass'];
 
             $kundenModel = new KundenModel();
             $kundenModel->create($benutzername, $passwort);
         }
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location: /Projekt-K/kunden');
+        header('Location:  /Projekt-K/kunden');
     }
 
     public function delete()

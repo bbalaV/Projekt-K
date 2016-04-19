@@ -38,9 +38,11 @@
       </script>
     <div class="login-card">
     <h1>Log-in</h1><br>
-  <form name="loginform" id="loginformid" action="/Projekt-K/kunden/doCreate">
+  <form name="loginform" id="loginformid" action="/Projekt-K/kunden/doCreate" method="post">
+      <div class="component" data-html="true">
     <input type="text" name="user" id="userid" placeholder="Benutzername" onkeyup="Checkusername()">
     <input type="password" id="passid" name="pass" placeholder="Passwort" onkeyup="Checkpassword()" disabled ="true">
     <input type="submit" name="login" class="login login-submit" value="Einloggen" disabled ="true" id="loginbuttonid" >
+      </div>
   </form>
 </div>
