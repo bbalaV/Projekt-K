@@ -1,22 +1,50 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    
+    
+
+ <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+<script>
+    function Checkusername(){
+      var x = document.forms["loginform"]["user"].value;   
+      
+     if(x == null || x == ""){ 
+  document.getElementById("passid").disabled = true;
+    }
+        else{
+        document.getElementById("passid").disabled = false;
+    }
+                          }
+    function Checkpassword(){
+       var passregex = /^[a-z0-9A-Z_-]{6,18}$/;
+        
+        if(passregex.test(loginformid.passid.value)){
+            document.getElementById("loginbuttonid").disabled = false;
+        }
+        else{
+            document.getElementById("loginbuttonid").disabled = true;
+        }
+    }
+      </script>
 <form class="form-horizontal" action="/kunden/doCreate" method="post">
 	<div class="component" data-html="true">
-		<div class="form-group">
-		  <label class="col-md-2 control-label" for="benutzername">Benutzername</label>
-		  <div class="col-md-4">
-		  	<input id="benutzername" name="benutzername" type="text" placeholder="Benutzername" class="form-control input-md">
-		  </div>
-		</div>
-		<div class="form-group">
-		  <label class="col-md-2 control-label" for="passwort">Passwort</label>
-		  <div class="col-md-4">
-		  	<input id="passwort" name="passwort" type="passwort" placeholder="Passwort" class="form-control input-md">
-		  </div>
-		</div>
-		<div class="form-group">
-	      <label class="col-md-2 control-label" for="send">&nbsp;</label>
-		  <div class="col-md-4">
-		    <input id="send" name="send" type="submit" class="btn btn-primary">
-		  </div>
-		</div>
+    <div class="login-card">
+    <h1>Log-in</h1><br>
+  <form name="loginform" id="loginformid">
+    <input type="text" name="user" id="userid" placeholder="Benutzername" onkeyup="Checkusername()">
+    <input type="password" id="passid" name="pass" placeholder="Passwort" onkeyup="Checkpassword()" disabled ="true">
+    <input type="submit" name="login" class="login login-submit" value="Einloggen" disabled ="true" id="loginbuttonid" >
+  </form>
+</div>
 	</div>
 </form>
