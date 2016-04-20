@@ -50,7 +50,7 @@ class WarenController
         $warenModel->deleteById($_GET['id']);
 
         // Anfrage an die URI /waren weiterleiten (HTTP 302)
-        header('Location: /waren');
+        header('Location: /Projekt-K/waren/index');
     }
 }
 

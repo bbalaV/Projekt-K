@@ -13,7 +13,7 @@
 				<div class="panel-body">
 					<p class="description">In der Datenbank existiert eine Ware mit dem Namen <?= $ware->name;?></p>
 					<p>
-						<a title="Löschen" href="/Projekt-K/waren/delete?id=<?= $waren->id ?>">Löschen</a>
+						<a title="Löschen" href="/Projekt-K/waren/delete?id=<?= $ware->id ?>">Löschen</a>
 					</p>
 				</div>
 			</div>

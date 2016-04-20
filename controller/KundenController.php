@@ -55,7 +55,7 @@ class KundenController
 
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location: /Projekt-K/waren/index');
+        header('Location: /Projekt-K/default/index');
     }
     
     public function login(){

@@ -32,10 +32,12 @@ class WarenModel extends Model
      */
     public function create($name, $preis, $filialenid, $menge)
     {
+        $result = mysql_query("SELECT id FROM $this->tableName WHERE name = '$filialenid'") or die (mysql_error());
+        $filialenid = $result;
         $query = "INSERT INTO $this->tableName (name, preis, filialenid, menge) VALUES (?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssss', $name, $preis, $filialenid, $menge);
+        $statement->bind_param('sdii', $name, $preis, $filialenid, $menge);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
