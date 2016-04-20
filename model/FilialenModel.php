@@ -11,13 +11,13 @@ require_once 'lib/Model.php';
  *
  * Die Ausführliche Dokumentation zu Models findest du in der Model Klasse.
  */
-class WarenModel extends Model
+class FilialenModel extends Model
 {
     /**
      * Diese Variable wird von der Klasse Model verwendet, um generische
      * Funktionen zur Verfügung zu stellen.
      */
-    protected $tableName = 'waren';
+    protected $tableName = 'filiale';
 
     /**
      * Erstellt eine neue Ware mit den gegebenen Werten.
@@ -32,7 +32,8 @@ class WarenModel extends Model
      */
     public function create($name, $preis, $filialenid, $menge)
     {
-
+        $result = mysqli_query("SELECT id FROM filiale WHERE name = '$filialenid'") or die (mysqli_error());
+        $filialenid = $result;
         $query = "INSERT INTO $this->tableName (name, preis, filialenid, menge) VALUES (?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -42,5 +43,6 @@ class WarenModel extends Model
             throw new Exception($statement->error);
         }
     }
+    
 }
 

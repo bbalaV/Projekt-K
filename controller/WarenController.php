@@ -22,26 +22,30 @@ class WarenController
 
     public function create()
     {
+        $login = false;
         $view = new View('waren_create');
         $view->title = 'Waren erstellen';
         $view->heading = 'Waren erstellen';
-        $view->display();
+        $view->display($login);
     }
 
     public function doCreate()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['name'];
-            $lastName = $_POST['preis'];
-            $email = $_POST['filialenid'];
-            $password = $_POST['menge'];
+        if ($_POST['warencreate']) {
+            $name = $_POST['ware'];
+            $preis = $_POST['preis'];
+            $filiale = $_POST['filiale'];
+            $menge = $_POST['menge'];
 
-            $warenModel = new warenModel();
+            $warenModel = new WarenModel();
+            // FilialenID auslesen
+            $filialenModel = new FilialenModel();
+            $filialenid = $filialen
             $warenModel->create($name, $preis, $filialenid, $menge);
         }
 
         // Anfrage an die URI /waren weiterleiten (HTTP 302)
-        header('Location: /waren');
+        header('Location: /Projekt-K/waren/index');
     }
 
     public function delete()

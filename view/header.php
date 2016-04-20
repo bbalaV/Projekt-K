@@ -35,7 +35,7 @@
           <ul class="nav navbar-nav">
             <li><a href="/Projekt-K/default/index">Home</a></li>
             <li><a href="/Projekt-K/waren/index">Waren</a></li>
-            <li><a href="/Projekt-K/kunden/create">Benutzer erstellen</a></li>
+            <li><a href="/Projekt-K/waren/create">Waren erstellen</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
