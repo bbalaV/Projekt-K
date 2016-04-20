@@ -9,9 +9,8 @@ require_once 'model/KundenModel.php';
 
 class KundenController
 {
-
     public function index()
-    {    $login = false;
+    {
 
         $kundenModel = new KundenModel();
 
@@ -20,31 +19,31 @@ class KundenController
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
 
-        $view->kunden = $kundenModel->readAll();
-        $view->display($login);
+        $view->users = $kundenModel->readAll();
+        $view->display();
     }
 
     public function create()
     {
-        $login = true;
+
         $view = new View('kunden_create');
         $view->title = 'Benutzer erstellen';
-        $view->heading = '';
-        $view->display($login);
-    }
+        $view->heading = 'Benutzer erstellen';
+        $view->display();
+
     public function doCreate()
     {
-        if ($_POST['login']) {
+        if ($_POST['send']) {
 
-            $benutzername = $_POST['user'];
-            $passwort = $_POST['pass'];
+            $firstName = $_POST['benutzername'];
+            $password = $_POST['passwort'];
 
             $kundenModel = new KundenModel();
             $kundenModel->create($benutzername, $passwort);
         }
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location:  /Projekt-K/default/index');
+        header('Location: /kunden');
     }
 
     public function delete()
@@ -55,18 +54,6 @@ class KundenController
 
 
         // Anfrage an die URI /kunden weiterleiten (HTTP 302)
-        header('Location: /Projekt-K/default/index');
-    }
-    
-    public function login(){
-         if ($_POST['login']) {
-
-            $benutzername = $_POST['user'];
-            $passwort = $_POST['pass'];
-
-            $kundenModel = new KundenModel();
-            $kundenModel->login($benutzername, $passwort);
-             
-        }
+        header('Location: /kunden');
     }
 }

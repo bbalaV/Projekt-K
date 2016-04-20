@@ -42,5 +42,18 @@ class WarenModel extends Model
             throw new Exception($statement->error);
         }
     }
+     public function edit($name, $preis, $filialenid, $menge, $id)
+    {
+
+        $query = "Update $this->tableName 
+        set name = ?, preis = ?, filialenid = ?, menge = ?
+        where id = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('sdiii', $name, $preis, $filialenid, $menge, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
 }
 
