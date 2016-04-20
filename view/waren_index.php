@@ -7,11 +7,11 @@
 			<h2 class="item title">Keine Waren vorhanden.</h2>
 		</div>
 	<?php else: ?>
-		<?php foreach ($kunden as $kunde): ?>
+		<?php foreach ($waren as $ware): ?>
 			<div class="panel panel-default">
-				<div class="panel-heading"><?= $waren->name;?></div>
+				<div class="panel-heading"><?= $ware->name;?></div>
 				<div class="panel-body">
-					<p class="description">In der Datenbank existiert eine Ware mit dem Namen <?= $kunde->name;?></p>
+					<p class="description">In der Datenbank existiert eine Ware mit dem Namen <?= $ware->name;?></p>
 					<p>
 						<a title="Löschen" href="/Projekt-K/waren/delete?id=<?= $waren->id ?>">Löschen</a>
 					</p>
@@ -20,4 +20,3 @@
 		<?php endforeach ?>
 	<?php endif ?>
 </article>
-y
