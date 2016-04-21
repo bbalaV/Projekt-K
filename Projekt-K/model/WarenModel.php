@@ -1,0 +1,85 @@
+
+
+
+
+<?php
+
+require_once 'lib/Model.php';
+
+/**
+ * Das UserModel ist zuständig für alle Zugriffe auf die Tabelle "user".
+ *
+ * Die Ausführliche Dokumentation zu Models findest du in der Model Klasse.
+ */
+class WarenModel extends Model
+{
+    /**
+     * Diese Variable wird von der Klasse Model verwendet, um generische
+     * Funktionen zur Verfügung zu stellen.
+     */
+    protected $tableName = 'waren';
+
+    /**
+     * Erstellt eine neue Ware mit den gegebenen Werten.
+     *
+     *
+     * @param $name Wert für die Spalte firstName
+     * @param $preis Wert für die Spalte preis
+     * @param $filialenid Wert für die Spalte filialenid
+     * @param $menge Wert für die Spalte menge
+     *
+     * @throws Exception falls das Ausführen des Statements fehlschlägt
+     */
+    public function create($name, $preis, $filialenid, $menge)
+    {
+
+        $query = "INSERT INTO $this->tableName (name, preis, filialenid, menge) VALUES (?, ?, ?, ?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('sdii', $name, $preis, $filialenid, $menge);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
+     public function edit($name, $preis, $filialenid, $menge, $id)
+    {
+
+        $query = "Update $this->tableName 
+        set name = ?, preis = ?, filialenid = ?, menge = ?
+        where id = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('sdiii', $name, $preis, $filialenid, $menge, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
+     public function search($ware)
+       {
+        // Query erstellen
+        $query = "SELECT * FROM $this->tableName WHERE name LIKE ?";
+
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $ware);
+
+        // Das Statement absetzen
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+    $rows = array();
+        while ($row = $result->fetch_object()) {
+            $rows[] = $row;
+        }
+
+        return $rows;
+    }
+}
+
